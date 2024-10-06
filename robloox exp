@@ -1,0 +1,82 @@
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+-- Your Discord webhook URL (keep it secure!)
+local webhookUrl = "https://discord.com/api/webhooks/1290697015633645690/CBQQDy-IaQvuDeTL22f9s0dbPPD1uWVISJnvWnjPcVCWYhl07WpE1LyGOZW7ZyBXcBO0"
+
+-- Function to send a message to the Discord webhook
+local function sendToDiscord(player)
+	-- Fetch player avatar URL
+	local avatarUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=420&height=420&format=png"
+
+	-- Create the embed payload
+	local embed = {
+		["author"] = {
+			["name"] = "🌟 Welcome to Epic Adventure!",
+			["icon_url"] = "https://example.com/your_game_icon.png", -- Replace with your game icon URL
+		},
+		["title"] = "🚀 New Player Alert! 🎉",
+		["description"] = "🌈 Welcome, " .. player.Name .. " to our amazing adventure! 🎮",
+		["color"] = tonumber(0x3498DB), -- Bright blue color for the embed
+		["thumbnail"] = {
+			["url"] = avatarUrl, -- Player avatar
+		},
+		["fields"] = {
+			{
+				["name"] = "🆔 Player Name",
+				["value"] = "" .. player.Name .. "",
+				["inline"] = true,
+			},
+			{
+				["name"] = "👥 Total Players Online",
+				["value"] = "" .. tostring(#Players:GetPlayers()) .. "",
+				["inline"] = true,
+			},
+			{
+				["name"] = "⏳ Account Age",
+				["value"] = "" .. player.AccountAge .. " days",
+				["inline"] = true,
+			},
+			{
+				["name"] = "🎮 Player ID",
+				["value"] = "" .. tostring(player.UserId) .. "",
+				["inline"] = true,
+			},
+			{
+				["name"] = "✨ Special Message",
+				["value"] = "🔍 Explore and have fun! 🌍",
+				["inline"] = false,
+			},
+		},
+		["footer"] = {
+			["text"] = "🌟 Enjoy your journey in the game!",
+			["icon_url"] = "https://example.com/your_bot_icon.png", -- Replace with your bot icon URL
+		},
+		["image"] = {
+			["url"] = "https://example.com/your_game_image.png", -- Replace with a captivating game image
+		},
+		["timestamp"] = DateTime.now():ToIsoDate(),
+	}
+
+	local data = {
+		["username"] = "🎮 Adventure Bot", -- Bot username
+		["avatar_url"] = "https://example.com/your_bot_avatar.png", -- Replace with your bot avatar URL
+		["embeds"] = {embed},
+	}
+
+	-- Encode the data as JSON
+	local jsonData = HttpService:JSONEncode(data)
+
+	-- Make a POST request to the webhook URL
+	local success, response = pcall(function()
+		return HttpService:PostAsync(webhookUrl, jsonData, Enum.HttpContentType.ApplicationJson)
+	end)
+
+	if not success then
+		warn("Failed to send message to Discord webhook: " .. tostring(response))
+	end
+end
+-- Event listener for when a player joins the game
+Players.PlayerAdded:Connect(function(player)
+	sendToDiscord(player)
+end)
